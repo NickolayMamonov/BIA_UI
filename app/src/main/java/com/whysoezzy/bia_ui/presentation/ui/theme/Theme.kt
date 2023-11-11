@@ -1,4 +1,4 @@
-package com.whysoezzy.bia_ui.ui.theme
+package com.whysoezzy.bia_ui.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build

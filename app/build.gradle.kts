@@ -66,4 +66,24 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Compose dependencies
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-beta01")
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha09")
+    implementation("androidx.compose.material:material-icons-extended:$1.4.3")
+    implementation("com.google.accompanist:accompanist-flowlayout:0.17.0")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha12")
+    implementation("androidx.activity:activity-compose:1.4.0-alpha02")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:1.3.2")
+    implementation("io.coil-kt:coil-svg:1.3.2")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1")
+
+    // Coroutine Lifecycle Scopes
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
 }

@@ -1,4 +1,4 @@
-package com.whysoezzy.bia_ui.ui.theme
+package com.whysoezzy.bia_ui.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
