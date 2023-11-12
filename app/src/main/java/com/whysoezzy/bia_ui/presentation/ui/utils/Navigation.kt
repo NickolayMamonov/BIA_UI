@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.whysoezzy.bia_ui.presentation.login_num.LoginNumScreen
+import com.whysoezzy.bia_ui.presentation.login_pass.LoginPassScreen
 import com.whysoezzy.bia_ui.presentation.splash.SplashScreen
 
 @Composable
@@ -19,6 +20,9 @@ fun Navigation(){
         }
         composable(Screen.LoginNumScreen.route){
             LoginNumScreen(navController = navController)
+        }
+        composable(Screen.LoginPassScreen.route){
+            LoginPassScreen(navController = navController)
         }
 
     }

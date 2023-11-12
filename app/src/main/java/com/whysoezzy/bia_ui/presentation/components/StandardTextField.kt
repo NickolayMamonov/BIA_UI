@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -13,50 +14,62 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.ui.ExperimentalComposeUiApi
+
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun StandardTextField(
     modifier: Modifier = Modifier,
     text: String = "",
     hint: String = "",
-    maxLength: Int = 40,
+    maxLength: Int,
+    mask: String = "",
+    maskNumber: Char,
     isError: Boolean = false,
     leadingIcon: String = "",
     keyboardType: KeyboardType = KeyboardType.Phone,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    onDoneAction: () -> Unit
 ) {
+
     OutlinedTextField(
         value = text,
         onValueChange = {
-            if(it.length <= 10) {
+            if(it.length <= maxLength) {
                 onValueChange(it)
             }
         },
         placeholder = {
             Text(
                 text = hint,
-                style = MaterialTheme.typography.bodySmall,
-                color = Color.Black,
+                style = MaterialTheme.typography.bodySmall
             )
         },
+
         shape = RoundedCornerShape(23.dp),
         isError = isError,
         textStyle = MaterialTheme.typography.headlineSmall,
         keyboardOptions = KeyboardOptions(
             keyboardType = keyboardType
         ),
-
+        keyboardActions = KeyboardActions(
+            onDone = {
+                onDoneAction()
+            }
+        ),
         singleLine = true,
         visualTransformation = PhoneNumFilter(mask, maskNumber),
         modifier = modifier

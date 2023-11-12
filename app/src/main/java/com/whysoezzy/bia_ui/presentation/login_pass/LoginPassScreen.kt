@@ -1,6 +1,6 @@
-package com.whysoezzy.bia_ui.presentation.login_num
+package com.whysoezzy.bia_ui.presentation.login_pass
 
-import android.widget.Space
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +20,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Center
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -33,7 +35,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.whysoezzy.bia_ui.R
 import com.whysoezzy.bia_ui.presentation.components.StandardTextField
-import com.whysoezzy.bia_ui.presentation.ui.theme.SpaceLarge
+import com.whysoezzy.bia_ui.presentation.login_num.LoginNumViewModel
 import com.whysoezzy.bia_ui.presentation.ui.theme.SpaceMedium
 import com.whysoezzy.bia_ui.presentation.ui.theme.SpaceSmall
 import com.whysoezzy.bia_ui.presentation.ui.theme.SpaceVeryLarge
@@ -41,9 +43,9 @@ import com.whysoezzy.bia_ui.presentation.ui.utils.Screen
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun LoginNumScreen(
+fun LoginPassScreen(
     navController: NavController,
-    viewModel: LoginNumViewModel = hiltViewModel()
+    viewModel: LoginPassViewModel = hiltViewModel()
 ) {
     val currentFocus = LocalFocusManager.current
     val softwareKeyboardController = LocalSoftwareKeyboardController.current
@@ -84,32 +86,53 @@ fun LoginNumScreen(
 
 
         ) {
-            Text(
-                text = "Добро пожаловать в БИА.Помощник логиста",
-                style = MaterialTheme.typography.headlineLarge
-            )
+
+            Row(
+                horizontalArrangement = Arrangement.Start,
+                verticalAlignment = Alignment.Top
+            ) {
+                Box(
+                    modifier = Modifier
+                        .clickable {
+                            navController.navigate(Screen.LoginNumScreen.route)
+                        }
+                        .padding(SpaceSmall)
+
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.back_arrow),
+                        contentDescription = null,
+                        tint = Color.Black,
+
+                    )
+                }
+
+                Text(
+                    text = "Введите пароль",
+                    style = MaterialTheme.typography.headlineLarge
+                )
+            }
             Spacer(modifier = Modifier.height(SpaceSmall))
             Text(
-                text = "Введите свой номер для авторизации",
+                text = "Для получения пароля обратитесь к руководителю",
                 style = MaterialTheme.typography.headlineMedium
             )
             Spacer(modifier = Modifier.height(SpaceSmall))
             StandardTextField(
-                text = viewModel.phoneNumText.value,
+                text = viewModel.phonePassText.value,
                 onValueChange = {
-                    viewModel.setPhoneNumText(it)
-                    isButtonEnabled = it.length == 10
+                    viewModel.setPhonePassText(it)
+                    isButtonEnabled = it.length == 6
                 },
-                mask = "+7(xxx)xxx-xx-xx",
-                maskNumber = 'x',
-                hint = "+7(999)000-00-00",
-                maxLength = 10,
                 onDoneAction = {
                     currentFocus.clearFocus()
                     softwareKeyboardController?.hide()
                 },
-
-            )
+                mask = "_ _ _ _ _ _",
+                maskNumber = '_',
+                hint = "_ _ _ _ _ _",
+                maxLength = 6,
+                )
             Spacer(modifier = Modifier.height(SpaceVeryLarge))
             Button(
                 modifier = Modifier
@@ -122,7 +145,7 @@ fun LoginNumScreen(
                     text = "Продолжить",
                     style = MaterialTheme.typography.headlineSmall,
                     color = Color.White,
-                    modifier = Modifier.align(CenterVertically))
+                    modifier = Modifier.align(Alignment.CenterVertically))
 
             }
 

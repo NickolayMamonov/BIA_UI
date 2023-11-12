@@ -6,6 +6,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
 import com.whysoezzy.bia_ui.R
 
@@ -37,7 +38,7 @@ val Typography = Typography(
         fontFamily = stolzl,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
-        color = Color.Black
+        color = Color.Black,
     ),
     headlineLarge = TextStyle(
         fontFamily = stolzl,

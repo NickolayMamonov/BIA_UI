@@ -8,8 +8,8 @@ import androidx.compose.ui.text.input.OffsetMapping
 import androidx.compose.ui.text.input.TransformedText
 import androidx.compose.ui.text.input.VisualTransformation
 
-const val mask = "+7(xxx)xxx-xx-xx"
-const val maskNumber: Char = 'x'
+//const val mask = "+7(xxx)xxx-xx-xx"
+//const val maskNumber: Char = 'x'
 //const val mask = "xx xxx xx xx"
 class PhoneNumFilter(val mask: String, val maskNumber: Char) : VisualTransformation {
 
