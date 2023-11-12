@@ -139,7 +139,7 @@ fun LoginPassScreen(
                     .fillMaxWidth(),
                 enabled = isButtonEnabled,
                 onClick = {
-                    navController.navigate(Screen.LoginPassScreen.route)
+                    navController.navigate(Screen.TasksScreen.route)
                 }) {
                 Text(
                     text = "Продолжить",
