@@ -27,6 +27,18 @@ val Typography = Typography(
         letterSpacing = 0.5.sp,
         color = Color.LightGray
     ),
+    bodySmall = TextStyle(
+        fontFamily = stolzl,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        color = Color.LightGray
+    ),
+    headlineSmall = TextStyle(
+        fontFamily = stolzl,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        color = Color.Black
+    ),
     headlineLarge = TextStyle(
         fontFamily = stolzl,
         fontWeight = FontWeight.Bold,
